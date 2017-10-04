@@ -7,7 +7,7 @@ var passport = require('passport');
  * If authentication is not successful send 401
  */
 router.post('/', passport.authenticate('local'), function(req, res) {
-    console.log('in post /');
+    console.log('in post /', res);
     res.sendStatus(200);
 })
 
