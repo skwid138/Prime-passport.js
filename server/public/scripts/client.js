@@ -10,6 +10,8 @@ myApp.config(function ($routeProvider, $locationProvider) {
     })
     .when('/register', {
       templateUrl: '/views/register.html',
+      controller: 'LoginController', 
+      controllerAs: 'lc'
     })
     .when('/user', {
       templateUrl: '/views/user.html',

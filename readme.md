@@ -2,8 +2,8 @@
 
 ## Steps 
 
-- [ ] Build registration route on the server
-- [ ] Test registration route see the users and passwords in the database
+- [X] Build registration route on the server
+- [X] Test registration route see the users and passwords in the database
 - [ ] Add login route and path
 - [ ] Add local strategy hard code to fail
 - [ ] Test local strategy 
