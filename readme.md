@@ -4,10 +4,10 @@
 
 - [X] Build registration route on the server
 - [X] Test registration route see the users and passwords in the database
-- [ ] Add login route and path
-- [ ] Add local strategy hard code to fail
-- [ ] Test local strategy 
-- [ ] Complete local strategy
+- [X] Add login route and path
+- [X] Add local strategy hard code to fail
+- [X] Test local strategy 
+- [X] Complete local strategy
 - [ ] Add session management code
 - [ ] Add hashing/salting
 - [ ] Add user route on the server to check if authed
