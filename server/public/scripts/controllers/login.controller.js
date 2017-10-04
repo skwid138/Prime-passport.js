@@ -11,5 +11,10 @@ myApp.controller('LoginController', function(UserService) {
     vm.registerUser = function() {
         UserService.registerUser(vm.user);
     }
+
+    vm.login = function() {
+        console.log('in login');
+        UserService.login(vm.user);
+    }
     
 });

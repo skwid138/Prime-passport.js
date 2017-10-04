@@ -17,4 +17,13 @@ myApp.service('UserService', function ($http) {
         });
     }
 
+    self.login = function(userObj) {
+        $http.post('/', userObj).then(function(response) {
+            console.log('user logged in correctly');
+            // allow them into other views
+        }).catch(function(err) {
+            console.log(err);
+        })
+    }
+
 });
