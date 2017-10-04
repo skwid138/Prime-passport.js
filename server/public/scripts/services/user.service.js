@@ -1,4 +1,4 @@
-myApp.service('UserService', function ($http) {
+myApp.service('UserService', function ($http, $location) {
     console.log('UserService loaded');
     var self = this;
 
@@ -12,6 +12,7 @@ myApp.service('UserService', function ($http) {
         
         $http.post('/register', userObj).then(function (respFromServer) {
             console.log('successful user creation', respFromServer);
+            $location.path('/login');
         }).catch(function (error) {
             console.log(error);
         });
@@ -21,6 +22,7 @@ myApp.service('UserService', function ($http) {
         $http.post('/', userObj).then(function(response) {
             console.log('user logged in correctly');
             // allow them into other views
+            $location.path('/user');
         }).catch(function(err) {
             console.log(err);
         })
