@@ -18,7 +18,12 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .when('/user', {
       templateUrl: '/views/user.html',
       controller: 'UserController',
-      controllerAs: 'uc'
+      controllerAs: 'uc',
+      resolve: {
+        getUser: function (UserService) {
+          UserService.getUser();
+        }
+      }
     })
     .when('/info', {
       templateUrl: '/views/templates/info.html',

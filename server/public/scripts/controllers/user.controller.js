@@ -4,8 +4,6 @@ myApp.controller('UserController', function(UserService) {
     var vm = this;
     vm.userObj = UserService.userObj;
 
-    UserService.getUser();
-
     vm.logout = function() {
         UserService.logout();
     }
