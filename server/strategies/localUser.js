@@ -3,9 +3,22 @@ var Strategy = require('passport-local').Strategy;
 
 var User = require('../models/userModel');
 
+// init request, dehydrate user for cookie/session
 passport.serializeUser(function (user, done) {
     console.log('in serializeUser', user);
     done(null, user.id);
+});
+
+// taking the session token and turing back into a user on the req
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        if(err){
+           done(err);
+        }
+        
+        console.log('------------------------------- dserialized: ', user.id);
+        done(null, user);
+    }); 
 });
 
 passport.use('local', new Strategy({
