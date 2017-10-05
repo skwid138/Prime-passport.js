@@ -10,15 +10,15 @@ passport.serializeUser(function (user, done) {
 });
 
 // taking the session token and turing back into a user on the req
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        if(err){
-           done(err);
+passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
+        if (err) {
+            done(err);
         }
-        
+
         console.log('------------------------------- dserialized: ', user.id);
         done(null, user);
-    }); 
+    });
 });
 
 passport.use('local', new Strategy({
@@ -36,12 +36,21 @@ passport.use('local', new Strategy({
         } else {
             // if password from request matches
             // password from database, authenticate!
-            if (password === user.password) {
-                done(null, user);
-            } else {
-                console.log('incorrect password');
-                done(null, false, { message: 'Incorrect credentials!' })                
-            }
+            user.comparePassword(password, function (err, isMatched) {
+                if (err) {
+                    // throw err;
+                    done(err);
+                }
+
+                if (isMatched) {
+                    console.log('valid password');
+                    
+                    done(null, user);
+                } else {
+                    console.log('invailid password');
+                    done(null, false, { message: 'Incorrect credentials!' })
+                }
+            });
         }
     });
 }));

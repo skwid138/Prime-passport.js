@@ -8,8 +8,8 @@
 - [X] Add local strategy hard code to fail
 - [X] Test local strategy 
 - [X] Complete local strategy
-- [ ] Add session management code
-- [ ] Add hashing/salting
+- [X] Add session management code
+- [X] Add hashing/salting
 - [ ] Add user route on the server to check if authed
 	- this should be pulled into a module so your server code can use it too.
 - [ ] Add logout to the user route on the server
