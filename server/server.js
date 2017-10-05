@@ -6,8 +6,9 @@ var session = require('express-session');
 var passport = require('./strategies/localUser');
 
 // require routers
-var registerRouter = require('./routes/register.js');
-var indexRouter = require('./routes/index.js');
+var registerRouter = require('./routes/register');
+var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
 
 var app = express();
 var port = 3000;
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 
 
 app.use('/register', registerRouter);
+app.use('/user', userRouter);
 app.use('/', indexRouter);
 
 app.listen(port, function() {

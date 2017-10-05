@@ -10,7 +10,7 @@
 - [X] Complete local strategy
 - [X] Add session management code
 - [X] Add hashing/salting
-- [ ] Add user route on the server to check if authed
+- [X] Add user route on the server to check if authed
 	- this should be pulled into a module so your server code can use it too.
-- [ ] Add logout to the user route on the server
+- [X] Add logout to the user route on the server
 - [ ] add resolves to get user information on each view

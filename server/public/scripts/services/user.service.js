@@ -2,6 +2,29 @@ myApp.service('UserService', function ($http, $location) {
     console.log('UserService loaded');
     var self = this;
 
+    self.userObj = {username: ''};
+
+    self.getUser = function () {
+        $http.get('/user').then(function(respFromServer) {
+            console.log('respFromServer', respFromServer);
+            self.userObj.username = respFromServer.data.username;
+
+        }).catch(function(error) {
+            // catch block will run when 401
+            console.log('error', error);
+            
+            $location.path('/home');
+        });
+    }
+
+    self.logout = function() {
+        
+        $http.get('/user/logout').then(function(respFromServer) {
+            console.log('respFromServer', respFromServer);
+            
+            $location.path('/home');
+        });
+    }
     /**
      * Takes a userObj and calls /register route to 
      * create a new user in the system

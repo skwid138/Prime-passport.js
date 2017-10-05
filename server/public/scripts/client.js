@@ -17,6 +17,8 @@ myApp.config(function ($routeProvider, $locationProvider) {
     })
     .when('/user', {
       templateUrl: '/views/user.html',
+      controller: 'UserController',
+      controllerAs: 'uc'
     })
     .when('/info', {
       templateUrl: '/views/templates/info.html',
