@@ -3,6 +3,7 @@ myApp.service('UserService', function ($http, $location) {
     var self = this;
 
     self.userObj = {username: ''};
+    self.itemObj = {list: []};
 
     self.getUser = function () {
         $http.get('/user').then(function(respFromServer) {
@@ -58,12 +59,12 @@ myApp.service('UserService', function ($http, $location) {
         }).catch(function (err) {
             console.log(err);
         });
-    }
+    };
 
     self.getItems = function () {
-        $http.get('/user').then(function (respFromServer) {
+        $http.get('/shelf').then(function (respFromServer) {
             console.log('respFromServer', respFromServer);
-            self.userObj.username = respFromServer.data.username;
+            self.itemObj.list = respFromServer.data;
 
         }).catch(function (error) {
             // catch block will run when 401

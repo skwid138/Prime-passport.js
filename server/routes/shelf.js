@@ -46,5 +46,20 @@ router.put('/', function(req, res) {
     // }) // end update    
 }); // end router update
 
+router.get('/', function(req, res){
+    console.log('router get');
+    User.find({}, function(err, obj){
+
+
+        if(err) {
+            console.log('error ->', err);
+            res.sendStatus(500);
+        } else {
+            console.log('user find results ->', obj.items);
+            res.send(obj.items);
+        }
+    });
+});
+
 // export
 module.exports = router;

@@ -17,12 +17,15 @@
     <script src="vendors/material/angular-messages.min.js" charset="utf-8" type="text/javascript"></script>
     <script src="vendors/material/angular-material.js" charset="utf-8" type="text/javascript"></script>
 
+
     <!-- Client Side -->
     <script type="text/javascript" src="scripts/client.js"></script>
     <script type="text/javascript" src="scripts/controllers/info.controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/login.controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/user.controller.js"></script>
     <script type="text/javascript" src="scripts/services/user.service.js"></script>
+    <script type="text/javascript" src="scripts/controllers/display.controller.js"></script>
+
 </head>
 
 <body ng-app="myApp">
@@ -30,6 +33,13 @@
     </header>
     <main>
         <ng-view></ng-view>
+
+        <div ng-controller="DisplayController as dc">
+
+
+
+        </div>
+
     </main>
     <footer>
 
