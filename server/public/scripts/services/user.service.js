@@ -51,4 +51,26 @@ myApp.service('UserService', function ($http, $location) {
         })
     }
 
+    self.makeItem = function (item) {
+        $http.put('/shelf', item).then(function (response) {
+            console.log('makeItem', item);
+            shelf.getItems();
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
+
+    self.getItems = function () {
+        $http.get('/user').then(function (respFromServer) {
+            console.log('respFromServer', respFromServer);
+            self.userObj.username = respFromServer.data.username;
+
+        }).catch(function (error) {
+            // catch block will run when 401
+            console.log('error', error);
+
+            $location.path('/user');
+        });        
+    }
+
 });

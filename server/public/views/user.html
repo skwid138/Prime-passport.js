@@ -1,4 +1,10 @@
 <div class="container">
     <h1 id="welcome" class="lead">Welcome, {{uc.userObj.username}}!</h1>
+    <form>
+        <input type="text" ng-model="uc.itemName">Item name:
+        <input type="text" ng-model="uc.itemDescription">Item description:
+        <input type="text" ng-model="uc.itemImage">Item url:
+        <button ng-click=""></button>
+    </form>
     <button class="btn btn-default" ng-click="uc.logout()">Log Out</button>
 </div>

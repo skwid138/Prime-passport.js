@@ -4,9 +4,16 @@ var bcrypt = require('bcrypt');
 
 var SALT_WORK_FACTOR = 12;
 
+var shelfSchema = new Schema({
+    name: String,
+    description: String,
+    image: String
+}); //end Schema
+
 var UserSchema = new Schema({
     username: { type: String, require: true, index: { unique: true } },
-    password: { type: String, require: true }
+    password: { type: String, require: true },
+    items: shelfSchema
 });
 
 UserSchema.pre('save', function (next) {
@@ -31,8 +38,8 @@ UserSchema.pre('save', function (next) {
             // if we logged user.password here
             user.password = hash;
             next();
-        })
-    })
+        });
+    });
 });
 
 // candidatePassword is password entered by user trying to login
@@ -47,8 +54,8 @@ UserSchema.methods.comparePassword = function(candidatePassword, callback) {
             callback(err);
         }
         
-        callback(null, isMatch)
-    })
-}
+        callback(null, isMatch);
+    });
+};
 
 module.exports = mongoose.model('User', UserSchema);
