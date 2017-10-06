@@ -7,7 +7,7 @@ myApp.service('UserService', function ($http, $location) {
 
     self.getUser = function () {
         $http.get('/user').then(function(respFromServer) {
-            console.log('respFromServer', respFromServer);
+            console.log('user respFromServer', respFromServer);
             self.userObj.username = respFromServer.data.username;
 
         }).catch(function(error) {
@@ -16,16 +16,16 @@ myApp.service('UserService', function ($http, $location) {
             
             $location.path('/home');
         });
-    }
+    };
 
     self.logout = function() {
         
         $http.get('/user/logout').then(function(respFromServer) {
-            console.log('respFromServer', respFromServer);
+            console.log('user logout respFromServer', respFromServer);
             
             $location.path('/home');
         });
-    }
+    };
     /**
      * Takes a userObj and calls /register route to 
      * create a new user in the system
@@ -40,7 +40,7 @@ myApp.service('UserService', function ($http, $location) {
         }).catch(function (error) {
             console.log(error);
         });
-    }
+    };
 
     self.login = function(userObj) {
         $http.post('/', userObj).then(function(response) {
@@ -49,13 +49,13 @@ myApp.service('UserService', function ($http, $location) {
             $location.path('/user');
         }).catch(function(err) {
             console.log(err);
-        })
-    }
+        });
+    };
 
     self.makeItem = function (item) {
         $http.put('/shelf', item).then(function (response) {
             console.log('makeItem', item);
-            shelf.getItems();
+            self.getItems();
         }).catch(function (err) {
             console.log(err);
         });
@@ -63,8 +63,10 @@ myApp.service('UserService', function ($http, $location) {
 
     self.getItems = function () {
         $http.get('/shelf').then(function (respFromServer) {
-            console.log('respFromServer', respFromServer);
+            console.log('getItems resp from server, you got served', respFromServer);
+            
             self.itemObj.list = respFromServer.data;
+            console.log('self.itemObj.list', self.itemObj.list);
 
         }).catch(function (error) {
             // catch block will run when 401
@@ -72,6 +74,6 @@ myApp.service('UserService', function ($http, $location) {
 
             $location.path('/user');
         });        
-    }
+    };
 
 });

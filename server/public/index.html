@@ -35,7 +35,9 @@
         <ng-view></ng-view>
 
         <div ng-controller="DisplayController as dc">
-
+            <div ng-repeat="user in dc.item.list">
+                <div ng-repeat="item in user.item">{{item.name}}</div>
+            </div>
 
 
         </div>

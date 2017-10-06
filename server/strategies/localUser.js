@@ -16,7 +16,7 @@ passport.deserializeUser(function (id, done) {
             done(err);
         }
 
-        console.log('------------------------------- dserialized: ', user.id);
+        console.log('------------------------------- deserialized: ', user.id);
         done(null, user);
     });
 });
@@ -32,7 +32,7 @@ passport.use('local', new Strategy({
     User.findOne({ username: username }, function (err, user) {
         if (!user) {
             console.log('username does not exist in the db');
-            done(null, false, { message: 'Incorrect credentials!' })
+            done(null, false, { message: 'Incorrect credentials!' });
         } else {
             // if password from request matches
             // password from database, authenticate!
@@ -47,8 +47,8 @@ passport.use('local', new Strategy({
                     
                     done(null, user);
                 } else {
-                    console.log('invailid password');
-                    done(null, false, { message: 'Incorrect credentials!' })
+                    console.log('invalid password');
+                    done(null, false, { message: 'Incorrect credentials!' });
                 }
             });
         }

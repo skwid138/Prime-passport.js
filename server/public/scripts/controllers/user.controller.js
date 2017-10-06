@@ -11,7 +11,7 @@ myApp.controller('UserController', function(UserService) {
             description: vm.itemDescription,
             image: vm.itemImage
         }    
-        userService.makeItem(vm.item);
+        UserService.makeItem(vm.item);
     }
 
     vm.logout = function() {
